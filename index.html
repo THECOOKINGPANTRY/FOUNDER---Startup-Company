@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111411">
+  <title>FOUNDER — Build Your Empire</title>
+  <meta name="description" content="Build a company from a tiny startup into a business empire.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="game-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Founder home">
+        <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+        <span>FOUNDER<span class="brand-period">.</span><small>BUSINESS SIMULATOR</small></span>
+      </a>
+
+      <div class="company-mini">
+        <div class="company-logo" id="company-logo">F</div>
+        <div class="company-mini-text">
+          <strong id="sidebar-company">Northstar Labs</strong>
+          <span id="sidebar-stage">Early-stage startup</span>
+        </div>
+        <span class="online-dot"></span>
+      </div>
+
+      <p class="nav-heading">WORKSPACE</p>
+      <nav class="side-nav">
+        <button class="nav-item active" data-view="office"><span class="nav-icon">▦</span> Office <span class="nav-arrow">↗</span></button>
+        <button class="nav-item" data-view="business"><span class="nav-icon">◈</span> Business</button>
+        <button class="nav-item" data-view="team"><span class="nav-icon">♙</span> Team <span class="nav-count" id="team-nav-count">1</span></button>
+        <button class="nav-item" data-view="products"><span class="nav-icon">◇</span> Products</button>
+        <button class="nav-item" data-view="marketing"><span class="nav-icon">↗</span> Marketing</button>
+        <button class="nav-item" data-view="research"><span class="nav-icon">⌘</span> Research</button>
+      </nav>
+
+      <p class="nav-heading company-heading">COMPANY</p>
+      <nav class="side-nav">
+        <button class="nav-item" data-view="finance"><span class="nav-icon">＄</span> Finances</button>
+        <button class="nav-item" data-view="objectives"><span class="nav-icon">◎</span> Objectives</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="level-card">
+          <div class="level-top"><span>FOUNDER LEVEL</span><strong id="level-label">01</strong></div>
+          <div class="level-track"><span id="level-progress"></span></div>
+          <p id="level-caption">Build your first product</p>
+        </div>
+        <button class="save-indicator" id="save-button"><span class="save-dot"></span> Progress saved locally <span>↻</span></button>
+        <div class="sidebar-profile">
+          <div class="profile-avatar">J</div>
+          <div><strong>Founder</strong><span>Company owner</span></div>
+          <button id="reset-button" class="subtle-icon" title="New game" aria-label="Start a new game">⋯</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb"><span>YOUR COMPANY</span><span class="crumb-divider">/</span><strong id="breadcrumb-title">Office</strong></div>
+        <div class="topbar-right">
+          <div class="day-pill"><span class="sun-icon">☼</span><span id="date-label">MONDAY, 1 JAN</span></div>
+          <button class="icon-btn" id="sound-button" title="Toggle sound" aria-label="Toggle sound">♫</button>
+          <button class="icon-btn" id="help-button" title="Help" aria-label="Help">?</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="page-heading">
+          <div>
+            <div class="overline" id="page-overline">YOUR FIRST HEADQUARTERS</div>
+            <h1 id="page-title">Build something <span>great.</span></h1>
+            <p id="page-description">Every empire starts somewhere. This is yours.</p>
+          </div>
+          <div class="heading-actions">
+            <button class="button button-secondary" id="rename-button">✎ <span>Edit company</span></button>
+            <button class="button button-primary" id="next-day-button">Next day <span>→</span></button>
+          </div>
+        </section>
+
+        <section class="metrics-grid" aria-label="Company metrics">
+          <article class="metric-card">
+            <div class="metric-top"><span>Available cash</span><span class="metric-symbol cash-symbol">$</span></div>
+            <div class="metric-value" id="cash-value">$25,000</div>
+            <div class="metric-foot"><span class="metric-neutral" id="cash-foot">Your starting capital</span></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span>Daily revenue</span><span class="metric-symbol revenue-symbol">↗</span></div>
+            <div class="metric-value" id="revenue-value">$0</div>
+            <div class="metric-foot"><span id="revenue-foot" class="metric-neutral">No products launched</span></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span>Team members</span><span class="metric-symbol team-symbol">♙</span></div>
+            <div class="metric-value" id="employees-value">1</div>
+            <div class="metric-foot"><span class="metric-neutral" id="employees-foot">Including you</span></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span>Company reputation</span><span class="metric-symbol rep-symbol">✳</span></div>
+            <div class="metric-value"><span id="reputation-value">5</span><small class="out-of">/ 100</small></div>
+            <div class="metric-foot"><span class="metric-neutral" id="customers-foot">Ready to grow</span></div>
+          </article>
+        </section>
+
+        <div class="dashboard-layout">
+          <section class="world-panel panel" id="world-panel">
+            <div class="panel-heading">
+              <div><div class="panel-kicker">YOUR WORKSPACE</div><h2 id="world-title">The first office</h2></div>
+              <div class="world-controls"><span class="world-status"><span class="online-dot"></span> LIVE WORLD</span><button class="icon-btn small" id="zoom-button" title="Toggle office view" aria-label="Toggle office view">⤢</button></div>
+            </div>
+            <div class="world-canvas-wrap" id="world-canvas-wrap">
+              <canvas id="office-canvas" width="960" height="590" aria-label="Interactive top-down office. Select furniture to inspect it."></canvas>
+              <div class="world-label"><span class="world-label-dot"></span><span id="world-location">STARTUP DISTRICT · SUITE 04</span></div>
+              <div class="world-hint" id="world-hint">SELECT AN OBJECT TO INSPECT</div>
+            </div>
+            <div class="world-legend">
+              <span><i class="legend-dot dot-employee"></i> Employees</span>
+              <span><i class="legend-dot dot-workstation"></i> Workstations</span>
+              <span><i class="legend-dot dot-active"></i> Active project</span>
+              <button id="build-button" class="text-button">＋ Build / upgrade</button>
+            </div>
+          </section>
+
+          <aside class="right-column">
+            <section class="panel action-panel">
+              <div class="panel-heading compact-heading"><div><div class="panel-kicker">WHAT'S NEXT</div><h2>Build your business</h2></div></div>
+              <div class="mission-card">
+                <div class="mission-icon">◇</div>
+                <div class="mission-copy"><span class="mission-label">YOUR FIRST MILESTONE</span><strong id="mission-title">Create your first product</strong><p id="mission-description">Turn an idea into something people can buy.</p></div>
+              </div>
+              <div class="mission-progress"><span id="mission-progress"></span></div>
+              <div class="mission-footer"><span id="mission-progress-text">0 / 100 progress</span><button id="mission-action" class="inline-action">Get started →</button></div>
+              <div class="quick-actions">
+                <button class="quick-action" id="quick-product"><span class="quick-action-icon purple-bg">◇</span><span><strong>Develop product</strong><small>Build something to sell</small></span><b>→</b></button>
+                <button class="quick-action" id="quick-hire"><span class="quick-action-icon blue-bg">♙</span><span><strong>Hire an employee</strong><small>Grow your team</small></span><b>→</b></button>
+                <button class="quick-action" id="quick-marketing"><span class="quick-action-icon green-bg">↗</span><span><strong>Launch marketing</strong><small>Reach more customers</small></span><b>→</b></button>
+              </div>
+            </section>
+
+            <section class="panel activity-panel">
+              <div class="panel-heading compact-heading"><div><div class="panel-kicker">FROM THE OFFICE</div><h2>Activity feed</h2></div><span class="activity-live"><i></i> LIVE</span></div>
+              <div id="activity-feed" class="activity-feed"></div>
+            </section>
+          </aside>
+        </div>
+
+        <section class="bottom-grid">
+          <article class="panel bottom-panel">
+            <div class="panel-heading compact-heading"><div><div class="panel-kicker">THE BIG PICTURE</div><h2>Company performance</h2></div><span class="muted-tag">LAST 7 DAYS</span></div>
+            <div class="chart-legend"><span><i class="chart-key revenue-key"></i> Revenue</span><span><i class="chart-key expense-key"></i> Expenses</span></div>
+            <div class="chart-wrap"><canvas id="finance-chart" width="650" height="170" aria-label="Chart showing company revenue and expenses"></canvas></div>
+            <div class="chart-summary"><div><span>Total revenue</span><strong id="total-revenue">$0</strong></div><div><span>Total expenses</span><strong id="total-expenses">$0</strong></div><div><span>Net profit</span><strong id="net-profit">$0</strong></div></div>
+          </article>
+          <article class="panel bottom-panel objectives-panel">
+            <div class="panel-heading compact-heading"><div><div class="panel-kicker">YOUR ROADMAP</div><h2>Startup objectives</h2></div><button class="text-button" id="view-objectives">View all ↗</button></div>
+            <div id="objectives-list" class="objectives-list"></div>
+          </article>
+        </section>
+
+        <footer class="game-footer"><span>FOUNDER <b>0.1.0</b> · EARLY ACCESS</span><span>A small company. A big future.</span></footer>
+      </div>
+    </main>
+  </div>
+
+  <div id="modal-root" class="modal-root hidden"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
